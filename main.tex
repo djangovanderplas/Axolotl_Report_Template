@@ -1,0 +1,101 @@
+\documentclass[]{dare_report}
+
+% Set up the bibliography
+\addbibresource{bibliography.bib}
+
+% Whether or not to use a more standard DARE header
+\setboolean{dareheader}{false} % 'true' or 'false'
+\usepackage[table]{xcolor}
+
+\definecolor{lightblue}{RGB}{198,217,240}
+\definecolor{midblue}{RGB}{141,180,226}
+\definecolor{darkblue}{RGB}{79,129,189}
+\definecolor{lightgreen}{RGB}{226,239,217}
+\definecolor{darkgreen}{RGB}{99,190,123}
+\definecolor{green}{RGB}{198,224,180}
+\definecolor{lightred}{RGB}{255,199,206}
+\definecolor{red}{RGB}{255,153,153}
+\definecolor{yellow}{RGB}{255,242,204}
+\definecolor{orange}{RGB}{244,177,131}
+
+
+% --- TITLE & INFO ---
+% Team name above title
+\setteamname{Axolotl}  % leave empty or comment out to remove
+
+% Document title
+\settitle{Report Template}
+
+% Document info
+\setdocumentid{AXO-XX-XXX}            % Document ID (leave empty or comment out to remove)
+\setversion{1.0}            % Document version (leave empty or comment out to remove)
+\setreportdate{\today}      % Document date
+
+% --- AUTHORS & REVIEWERS ---
+% Document authors (multiple authors: split names with comma)
+% If you want a comma in the name, use: \setauthor{{Surname, First name}, {Surname, First name}, ...}
+\setauthor{{Axolotl One}, {Axolotl Two}}
+
+% Document reviewers (split with commas)
+\setreviewer{{Axolotl Three}}  % leave empty or comment out to remove reviewer section
+
+% Titlepage background image
+\setbackgroundimage{cover.jpg}
+
+% --- HEADER INFO ---
+\setheaderaddress{Mekelweg 4, 2628 CD Delft}  % Address
+\setheaderphone{+31 6 123456789}                  % Phone number  (automatically makes 'tel:' href)
+\setheaderemail{axolotl@dare.tudelft.nl}    % Email address (automatically makes 'mailto:' href)
+\setheaderwebsite{dare.tudelft.nl}            % Website       (automatically makes url href)
+
+%% ----------------------------------------------------------------------
+%%    Begin of document (Roman page numbering)
+%% ----------------------------------------------------------------------
+
+\begin{document}
+\pagestyle{plain}
+
+\frontmatter
+
+\makecover
+
+\subfile{frontmatter/preface}
+% \subfile{frontmatter/summary}
+\subfile{frontmatter/nomenclature}
+
+\tableofcontents
+%\listoffigures
+%\listoftables
+
+%% ----------------------------------------------------------------------
+%%    Body (Arabic page numbering)
+%% ----------------------------------------------------------------------
+
+\mainmatter
+
+\subfile{mainmatter/10-chapter1}
+
+\subfile{mainmatter/20-chapter2}
+
+\printbibliography
+
+%% ----------------------------------------------------------------------
+%%    Appendices (Letters for chapters)
+%% ----------------------------------------------------------------------
+
+\begin{appendices}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+\makeatletter
+\addtocontents{toc}{%
+  \begingroup
+  \let\protect\l@chapter\protect\l@section
+  \let\protect\l@section\protect\l@subsection
+}
+\makeatother
+
+\subfile{appendices/appendix_a}
+
+\addtocontents{toc}{\endgroup}
+\end{appendices}
+
+\end{document}
